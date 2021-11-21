@@ -664,7 +664,7 @@
             ],
             [
               8706,
-              'partial differential'
+              'partials differential'
             ],
             [
               8704,
