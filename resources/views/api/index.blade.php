@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +20,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
 </head>
 
 <body>
@@ -29,111 +28,90 @@
 
     <!-- partial -->
 
-        <!-- partial:../../partials/_settings-panel.html -->
+    <!-- partial:../../partials/_settings-panel.html -->
 
 
-        <div class="container-fluid">
-            <div class="col-12 text-center mb-3 mt-3">
-                <a href="{{ route('tasks') }}" class="btn btn-primary">Адмін панель</a>
-            </div>
-            <div class="content-wrapper">
-                <div class="row">
+    <div class="container-fluid">
+        <div class="col-12 text-center mb-3 mt-3">
+            <a href="{{ route('tasks') }}" class="btn btn-primary">Адмін панель</a>
+        </div>
+        <div class="content-wrapper">
+            <div class="row">
 
-                    <div class="col-md-6 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Фільтр GET APi</h4>
-
-                                <form class="forms-sample" method="get" action="{{ route('api.tasks') }}">
-
-                                    <div class="form-group">
-                                        <label for="exampleInputUsername1">Перевірка назви</label>
-                                        <input type="text" name="name" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputUsername1">Перевірка терміну</label>
-                                        <input type="datetime-local" name="term" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputUsername1">Перевірка дати створення</label>
-                                        <input type="datetime-local" name="created_at" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputUsername1">Перевірка дати оновлення</label>
-                                        <input type="datetime-local" name="updated_at" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputUsername1">Перевірка статусу</label>
-                                        <input type="number" name="status_id" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                                    </div>
-
-
-                                    <button type="submit" class="btn btn-primary mr-2">Перевірити</button>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Зміна статусу в POST API</h4>
-                                <div class="table-responsive">
-                                    <table id="example1" class="display expandable-table" style="width:100%">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Назва</th>
-                                            <th>Статус</th>
-                                            <th>Дії</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($tasks as $task)
-                                            <tr>
-                                                <td>{{$task->id}}</td>
-                                                <td>{{$task->name}}</td>
-                                                 <form class="forms-sample" method="post" action="{{ route('api.changeStatus', $task->id)  }}">
-                                                     <td>
-                                                        <div class="form-group row">
-                                                         <select name="status_id" class="form-control">
-                                                             @foreach($statuses as $status)
-                                                                 @if($status->id == $task->status_id)
-                                                                     <option selected value="{{$status->id}}">{{$status->name}}</option>
-                                                                 @else
-                                                                     <option value="{{$status->id}}">{{$status->name}}</option>
-                                                                 @endif
-                                                             @endforeach
-                                                            </select>
-
-                                                        </div>
-                                                </td>
-                                                     <td> <button type="submit"  class="btn btn-primary mr-2">Перевірити</button></td>
-
-                                                    </form>
-
-
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                        <h2>Получити завдання по id: api/tasks/{id}</h2>
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Получити завдання по id: <b>api/tasks/{id}</b></h3>
+                            <h3>Фільтр по полях завдання: <b>api//tasks?{parameter}</b></h3>
+                            <h3> Команда для створення дефолтного адміністратора: <b><i>php artisan create:admin</i></b>
+                            </h3>
+                            <p>Email: <b>admin@gmail.com</b></p>
+                            <p>Password: <b>admin2221</b></p>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Зміна статусу в POST API</h4>
+                            <div class="table-responsive">
+                                <table id="example1" class="display expandable-table" style="width:100%">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Назва</th>
+                                        <th>Статус</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($tasks as $task)
+                                        <tr>
+                                            <td>{{$task->id}}</td>
+                                            <td>{{$task->name}}</td>
+                                            <form class="forms-sample" method="post"
+                                                  action="{{ route('api.changeStatus', $task->id)  }}">
+                                                <td>
+                                                    <div class="form-group row">
+                                                        <select name="status_id" class="form-control">
+                                                            @foreach($statuses as $status)
+                                                                @if($status->id == $task->status_id)
+                                                                    <option selected
+                                                                            value="{{$status->id}}">{{$status->name}}</option>
+                                                                @else
+                                                                    <option
+                                                                        value="{{$status->id}}">{{$status->name}}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
 
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="submit" class="btn btn-primary mr-2">Перевірити
+                                                    </button>
+                                                </td>
+
+                                            </form>
+
+
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <!-- main-panel ends -->
+
     </div>
-    <!-- page-body-wrapper ends -->
+    <!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->
 
 <!-- container-scroller -->
 <!-- plugins:js -->

@@ -33,7 +33,7 @@ class TaskApiController extends Controller
     public function filter($request, $task)
     {
 
-        if ($request->has('name')) {
+        if ($request->has('name') ) {
             return $task->where('name', $request->name)->get();
         }
         if ($request->has('term')) {
