@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\TaskApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/tasks/{id}', [TaskApiController::class, 'show'])->name('api.show');
+Route::get('/tasks', [TaskApiController::class, 'index'])->name('api.tasks');
+Route::post('/tasks/status/{id}/update', [TaskApiController::class, 'changeStatus'])->name('api.changeStatus');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});

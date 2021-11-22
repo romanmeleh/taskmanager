@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
@@ -15,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//TestApi
+Route::get('/', [HomeController::class,'index'])->name('login');
+
 Route::middleware(['auth'])->group(function(){
 //Task
-Route::get('/', function (){
+/*Route::get('/', function (){
     redirect()->route('tasks');
-});
+});*/
 Route::get('/tasks', [TaskController::class,'index'])->name('tasks');
 Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
 Route::post('/task/create', [TaskController::class, 'save'])->name('task.save');
@@ -39,4 +43,6 @@ Route::post('/status/edit/{id}', [StatusController::class, 'update'])->name('sta
 Route::get('/login', [CustomAuthController::class,'index'])->name('login');
 Route::post('/login', [CustomAuthController::class, 'customLogin'])->name('customlogin');
 Route::post('/logout', [CustomAuthController::class, 'logout'])->name('logout');
+
+
 

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class StatusController extends Controller
 {
     public function index(){
-        $statuses = Status::orderBy('created_at','desc')->paginate(15);
+        $statuses = Status::orderBy('created_at','desc')->paginate(10);
 
         return  view('status.index')->with(['statuses'=>$statuses]);
 
